@@ -14,8 +14,8 @@ The progress of this project can be tracked (in Portuguese) in a [blog post](htt
 
 ## Brief description
 
-The console will be run by a Arduino and a Raspberry PI, the Arduino will handle all the sensors, keypad and buzzers independently.
+The console will be run by a Arduino and an API running on a server, the Arduino will handle all the sensors, keypad and buzzers independently.
 
-The Raspberry PI will expose and API (probably using Django REST) to communicate events and receive instructions.
+The API (probably using Django REST) to communicate events and receive instructions.
 
-After receiving new programming the Raspberry PI will pass it to the Arduino via  RS232. 
+After receiving new programming the API will pass it to the Arduino via  ethernet. 
