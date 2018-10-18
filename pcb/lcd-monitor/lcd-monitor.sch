@@ -859,67 +859,37 @@ Text GLabel 3300 2100 0    50   Input ~ 0
 LED_Alarm
 Text GLabel 6350 2400 2    50   Input ~ 0
 LED_Armed
-Text GLabel 6350 2500 2    50   Input ~ 0
+Text GLabel 6350 4500 2    50   Input ~ 0
 LED_Alarm
 $Comp
 L Device:Buzzer BZ?
 U 1 1 5BD13CCE
-P 5200 1200
-F 0 "BZ?" H 5353 1229 50  0000 L CNN
-F 1 "Buzzer" H 5353 1138 50  0000 L CNN
-F 2 "" V 5175 1300 50  0001 C CNN
-F 3 "~" V 5175 1300 50  0001 C CNN
-	1    5200 1200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R_POT RV?
-U 1 1 5BD13EFC
-P 4800 1100
-F 0 "RV?" H 4730 1146 50  0000 R CNN
-F 1 "R_POT" H 4730 1055 50  0000 R CNN
-F 2 "" H 4800 1100 50  0001 C CNN
-F 3 "~" H 4800 1100 50  0001 C CNN
-	1    4800 1100
+P 5000 1050
+F 0 "BZ?" H 5153 1079 50  0000 L CNN
+F 1 "Buzzer" H 5153 988 50  0000 L CNN
+F 2 "" V 4975 1150 50  0001 C CNN
+F 3 "~" V 4975 1150 50  0001 C CNN
+	1    5000 1050
 	1    0    0    -1  
 $EndComp
 Text Notes 4750 750  0    50   ~ 0
 Buzzer
-Wire Wire Line
-	4800 950  4800 900 
-Wire Wire Line
-	4950 1100 5100 1100
 $Comp
 L power:GND #PWR?
 U 1 1 5BD31A45
-P 5100 1350
-F 0 "#PWR?" H 5100 1100 50  0001 C CNN
-F 1 "GND" H 5105 1177 50  0000 C CNN
-F 2 "" H 5100 1350 50  0001 C CNN
-F 3 "" H 5100 1350 50  0001 C CNN
-	1    5100 1350
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5BD31A8A
-P 4800 1300
-F 0 "#PWR?" H 4800 1050 50  0001 C CNN
-F 1 "GND" H 4805 1127 50  0000 C CNN
-F 2 "" H 4800 1300 50  0001 C CNN
-F 3 "" H 4800 1300 50  0001 C CNN
-	1    4800 1300
+P 4900 1200
+F 0 "#PWR?" H 4900 950 50  0001 C CNN
+F 1 "GND" H 4905 1027 50  0000 C CNN
+F 2 "" H 4900 1200 50  0001 C CNN
+F 3 "" H 4900 1200 50  0001 C CNN
+	1    4900 1200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4800 1300 4800 1250
-Wire Wire Line
-	5100 1350 5100 1300
-Text GLabel 4700 900  0    50   Input ~ 0
+	4900 1200 4900 1150
+Text GLabel 4900 950  0    50   Input ~ 0
 Buzzer
-Wire Wire Line
-	4700 900  4800 900 
-Text GLabel 6350 4500 2    50   Input ~ 0
+Text GLabel 6350 2500 2    50   Input ~ 0
 Buzzer
 NoConn ~ 2050 1100
 NoConn ~ 2050 1200
