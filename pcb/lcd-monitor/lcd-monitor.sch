@@ -318,12 +318,12 @@ Wire Wire Line
 $Comp
 L power:GND #PWR031
 U 1 1 5BC9AAA7
-P 6750 1450
-F 0 "#PWR031" H 6750 1200 50  0001 C CNN
-F 1 "GND" H 6755 1277 50  0000 C CNN
-F 2 "" H 6750 1450 50  0001 C CNN
-F 3 "" H 6750 1450 50  0001 C CNN
-	1    6750 1450
+P 6750 1200
+F 0 "#PWR031" H 6750 950 50  0001 C CNN
+F 1 "GND" H 6755 1027 50  0000 C CNN
+F 2 "" H 6750 1200 50  0001 C CNN
+F 3 "" H 6750 1200 50  0001 C CNN
+	1    6750 1200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -452,8 +452,6 @@ F 3 "~" H 10250 3350 50  0001 C CNN
 	1    10250 3350
 	1    0    0    -1  
 $EndComp
-Text GLabel 10450 3250 2    50   Input ~ 0
-CTS
 Text GLabel 10450 3450 2    50   Input ~ 0
 328_RX
 Text GLabel 10450 3550 2    50   Input ~ 0
@@ -542,7 +540,7 @@ Key_7
 Text GLabel 1100 1750 2    50   Input ~ 0
 Key_8
 Wire Wire Line
-	6750 1150 6750 1450
+	6750 1150 6750 1200
 $Comp
 L power:GND #PWR032
 U 1 1 5BCC2B13
