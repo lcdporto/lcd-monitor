@@ -1496,14 +1496,15 @@ S2
 Text GLabel 5150 4300 0    50   Input ~ 0
 S3
 $Comp
-L Connector_Generic:Conn_02x05_Odd_Even J?
+L Connector_Generic:Conn_02x05_Odd_Even J3
 U 1 1 5BCAAB4F
 P 2250 1300
-F 0 "J?" H 2300 1717 50  0000 C CNN
+F 0 "J3" H 2300 1717 50  0000 C CNN
 F 1 "Conn_02x05_Odd_Even" H 2300 1626 50  0000 C CNN
-F 2 "" H 2250 1300 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x05_P2.54mm_Vertical" H 2250 1300 50  0001 C CNN
 F 3 "~" H 2250 1300 50  0001 C CNN
 	1    2250 1300
 	1    0    0    -1  
 $EndComp
+NoConn ~ 10450 3250
 $EndSCHEMATC
