@@ -1751,7 +1751,7 @@ F 3 "https://www.fairchildsemi.com/datasheets/2N/2N7002.pdf" H 7950 4650 50  000
 $EndComp
 Connection ~ 8050 4450
 Text GLabel 7700 5950 0    50   Input ~ 0
-S4
+S6
 $Comp
 L Device:LED D7
 U 1 1 5BE5F227
@@ -1913,7 +1913,7 @@ F 3 "https://www.fairchildsemi.com/datasheets/2N/2N7002.pdf" H 9100 4650 50  000
 $EndComp
 Connection ~ 9200 4450
 Text GLabel 8850 5950 0    50   Input ~ 0
-S2
+S7
 $Comp
 L Device:LED D9
 U 1 1 5BE88B49
@@ -2074,85 +2074,4 @@ F 3 "https://www.fairchildsemi.com/datasheets/2N/2N7002.pdf" H 10300 4650 50  00
 	1    0    0    -1  
 $EndComp
 Connection ~ 10400 4450
-Text GLabel 10050 5950 0    50   Input ~ 0
-S4
-$Comp
-L Device:LED D11
-U 1 1 5BE88BA1
-P 10800 5750
-F 0 "D11" H 10792 5495 50  0000 C CNN
-F 1 "LED" H 10792 5586 50  0000 C CNN
-F 2 "LED_SMD:LED_0805_2012Metric" H 10800 5750 50  0001 C CNN
-F 3 "~" H 10800 5750 50  0001 C CNN
-	1    10800 5750
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R25
-U 1 1 5BE88BA7
-P 10400 5550
-F 0 "R25" V 10193 5550 50  0000 C CNN
-F 1 "10K" V 10284 5550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric" V 10330 5550 50  0001 C CNN
-F 3 "~" H 10400 5550 50  0001 C CNN
-	1    10400 5550
-	-1   0    0    1   
-$EndComp
-$Comp
-L power:+5V #PWR066
-U 1 1 5BE88BAD
-P 10400 5350
-F 0 "#PWR066" H 10400 5200 50  0001 C CNN
-F 1 "+5V" H 10415 5523 50  0000 C CNN
-F 2 "" H 10400 5350 50  0001 C CNN
-F 3 "" H 10400 5350 50  0001 C CNN
-	1    10400 5350
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	10050 5950 10100 5950
-Wire Wire Line
-	10650 5750 10400 5750
-Wire Wire Line
-	10400 5750 10400 5700
-Wire Wire Line
-	10400 5400 10400 5350
-$Comp
-L power:GND #PWR067
-U 1 1 5BE88BB7
-P 10400 6200
-F 0 "#PWR067" H 10400 5950 50  0001 C CNN
-F 1 "GND" H 10405 6027 50  0000 C CNN
-F 2 "" H 10400 6200 50  0001 C CNN
-F 3 "" H 10400 6200 50  0001 C CNN
-	1    10400 6200
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR071
-U 1 1 5BE88BBD
-P 10950 5800
-F 0 "#PWR071" H 10950 5550 50  0001 C CNN
-F 1 "GND" H 10955 5627 50  0000 C CNN
-F 2 "" H 10950 5800 50  0001 C CNN
-F 3 "" H 10950 5800 50  0001 C CNN
-	1    10950 5800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	10400 6200 10400 6150
-Wire Wire Line
-	10950 5800 10950 5750
-$Comp
-L Transistor_FET:2N7002 Q8
-U 1 1 5BE88BC5
-P 10300 5950
-F 0 "Q8" H 10505 5996 50  0000 L CNN
-F 1 "2N7002" H 10505 5905 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10500 5875 50  0001 L CIN
-F 3 "https://www.fairchildsemi.com/datasheets/2N/2N7002.pdf" H 10300 5950 50  0001 L CNN
-	1    10300 5950
-	1    0    0    -1  
-$EndComp
-Connection ~ 10400 5750
 $EndSCHEMATC
