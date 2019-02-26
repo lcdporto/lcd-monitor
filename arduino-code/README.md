@@ -1,3 +1,3 @@
 # Arduino Code
 
-Code running on the Arduino controling the LCD Monitor.
+Code running on the Arduino controlling the LCD Monitor.
