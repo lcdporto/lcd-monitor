@@ -5,11 +5,11 @@
  *
  */
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include <EEPROM.h>
 #include <Keypad.h>
 #include <elapsedMillis.h>
-#include "loadConfig.cpp"
+#include "loadConfig.h"
 /******************
  * PIN asignments
  */
@@ -19,17 +19,17 @@ byte rowPins[] = {A7,A6,A5,A4};
 byte colPins[] = {A3,A2,A1,A0};
 
 // active zones
-const byte zones[2] = { 2, 3 };
+const byte zones[3] = { 5, 6, 9 };
 
 // the LEDs
-const byte LED_ALARM = 9;
-const byte LED_ARMED = 13;
+const byte LED_ALARM = 2;
+const byte LED_ARMED = 4;
 
 // the buzz
-const byte Buzzer = 12;
+const byte Buzzer = 3;
 
 // External alarm
-const byte E_ALARM = 11;
+const byte E_ALARM = 7;
 
 /*
  * end PIN assigments
