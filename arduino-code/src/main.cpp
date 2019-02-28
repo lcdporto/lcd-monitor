@@ -9,6 +9,7 @@
 #include <EEPROM.h>
 #include <Keypad.h>
 #include <elapsedMillis.h>
+#include "main.h"
 #include "loadConfig.h"
 /******************
  * PIN asignments
@@ -91,7 +92,7 @@ void setup() {
   // read EEPROM
   loadConfig();
 
-  for ( int i = 0; i < sizeof(zones) - 1; i++ ) {
+  for ( uint i = 0; i < sizeof(zones) - 1; i++ ) {
     pinMode(i,INPUT);
   }
   pinMode(LED_ALARM, OUTPUT); digitalWrite(LED_ALARM, HIGH);
