@@ -12,6 +12,11 @@
 
 #define DEFAULT_PIN 10561
 
+// ALARM_ZONES Codes
+#define ZONE_DEFERRED_ACTIVE   128
+#define ZONE_DEFERRED_INACTIVE 0
+#define ZONE_INSTANT_ACTIVE    129
+#define ZONE_INSTANT_INACTIVE  1
 
 class Configuration {
   public:

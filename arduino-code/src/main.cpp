@@ -55,14 +55,6 @@ const byte sndCancel=2;
 const byte sndKeyPress=3;
 
 
-/* zoneType: 0 = Instant Alarm; 1 = Deferred Alarm ); */
-#define INSTANT_ALARM  1
-#define DEFERRED_ALARM 0
-bool zoneType[2] = {
-  0,
-  0
-};
-
 /* deferTime, time in seconds before a Deferred Alarm goes on */
 byte deferTime = 15;
 
@@ -162,11 +154,13 @@ void heartBeat()
 
 /* Read All Zones and trigger Alarm Events */
 void readZones() {
+/*
   for ( int zone = 0; zone < sizeof(zones); zone++ ) {
 
     if( ( !digitalRead(zones[zone]) ) && isArmed ) {
 
-      if ( zoneType[zone] = INSTANT_ALARM ) {
+
+      if ( zoneType[zone] = ALARM_ZONE_INSTANT ) {
         onAlarm=true;
       } else {
         deferredAlarmState=true;
@@ -185,6 +179,7 @@ void readZones() {
   ) {
     onAlarm=true;
   }
+*/
 }
 
 

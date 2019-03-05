@@ -48,7 +48,20 @@ void Configuration::_configureDefaults() {
   EEPROM.put(4,random(0,255));
   EEPROM.put(5,random(0,255));
 
-  // Zones 1 - 3
+  /**
+   * Zone Defalts
+   *
+   *   Zone 1 - Anti-tampering
+   *   Zone 2 - Enterance (buzzer+delayed alarm)
+   *   Zone 3 - Other (deactivated)
+   */
+  EEPROM.put(6, ZONE_INSTANT_ACTIVE);
+  EEPROM.put(7, ZONE_DEFERRED_ACTIVE);
+  EEPROM.put(8, ZONE_INSTANT_ACTIVE);
+  
+  // MASTERPIN
+
+
 
 }
 
