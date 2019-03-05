@@ -11,6 +11,10 @@ Configuration::Configuration() {
   this->mac[3] = EEPROM.read(3);
   this->mac[4] = EEPROM.read(4);
   this->mac[5] = EEPROM.read(5);
+
+  for (uint8_t i = 6; EEPROM.read(i) > 0; i++){
+    wallet[i] = EEPROM.read(i);
+  }
 }
 
 int Configuration::sherwood() {
@@ -37,16 +41,22 @@ bool Configuration::_checkIfConfigured() {
  */
 void Configuration::_configureDefaults() {
 
+  int eeprom_addr = 0;
+
   // the ramdom signature
-  EEPROM.put(0,RANDOM_SIG0);
-  EEPROM.put(1,RANDOM_SIG1);
-  EEPROM.put(2,RANDOM_SIG2);
+  EEPROM.put(eeprom_addr++,RANDOM_SIG0);
+  EEPROM.put(eeprom_addr++,RANDOM_SIG1);
+  EEPROM.put(eeprom_addr++,RANDOM_SIG2);
 
   // MAC aadress
   randomSeed(analogRead(0));
-  EEPROM.put(3,random(0,255));
-  EEPROM.put(4,random(0,255));
-  EEPROM.put(5,random(0,255));
+  EEPROM.put(eeprom_addr++,random(0,255));
+  EEPROM.put(eeprom_addr++,random(0,255));
+  EEPROM.put(eeprom_addr++,random(0,255));
+
+  // Default Password
+  this->wallet[0] = 452367;
+  EEPROM.put(eeprom_addr++, wallet[0]);
 
   // Zones 1 - 3
 

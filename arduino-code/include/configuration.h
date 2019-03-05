@@ -19,6 +19,7 @@ class Configuration {
     int sherwood();
     bool onDefault();
     byte * macAddress();
+    uint32_t wallet[100] = {0};
 
   protected:
     byte mac[6] = { 0x90, 0xA2, 0xDA, 0x00, 0x00, 0x00 };
