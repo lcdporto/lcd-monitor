@@ -82,7 +82,22 @@ int keyToneDuration = 50;
 // =========================================================================88|
 
 void setup() {
-  
+
+  Serial.begin(9600); while (!Serial) { ; }
+  Serial.println();
+  Serial.print("Default PIN: ");
+  Serial.println(conf.sherwood());
+
+  Serial.println();
+  Serial.print("1st Byte: ");
+  Serial.println(EEPROM.read(0));
+  Serial.print("2nd Byte: ");
+  Serial.println(EEPROM.read(1));
+  Serial.print("3rd Byte: ");
+  Serial.println(EEPROM.read(2));
+
+  byte *myMAC = conf.macAddress();
+
   for ( uint i = 0; i < sizeof(zones) - 1; i++ ) {
     pinMode(i,INPUT);
   }
