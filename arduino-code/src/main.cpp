@@ -6,11 +6,14 @@
  */
 
 #include <Arduino.h>
-#include <EEPROM.h>
 #include <Keypad.h>
 #include <elapsedMillis.h>
+#include <EEPROM.h>
 #include "main.h"
-#include "loadConfig.h"
+#include "configuration.h"
+
+Configuration conf;
+
 /******************
  * PIN asignments
  */
@@ -35,15 +38,6 @@ const byte E_ALARM = 7;
 /*
  * end PIN assigments
  *********************/
-
-
-// struct with configuration to be stored on EEPROM
-struct confSettings{
-  bool zoneType[6];
-  byte daferTime;
-};
-
-confSettings conf;
 
 /* starting keypad */
 // @TODO should this go into the function that andles the keypad
@@ -89,8 +83,20 @@ int keyToneDuration = 50;
 
 void setup() {
 
-  // read EEPROM
-  loadConfig();
+  Serial.begin(9600); while (!Serial) { ; }
+  Serial.println();
+  Serial.print("Default PIN: ");
+  Serial.println(conf.sherwood());
+
+  Serial.println();
+  Serial.print("1st Byte: ");
+  Serial.println(EEPROM.read(0));
+  Serial.print("2nd Byte: ");
+  Serial.println(EEPROM.read(1));
+  Serial.print("3rd Byte: ");
+  Serial.println(EEPROM.read(2));
+
+  byte *myMAC = conf.macAddress();
 
   for ( uint i = 0; i < sizeof(zones) - 1; i++ ) {
     pinMode(i,INPUT);
@@ -100,7 +106,6 @@ void setup() {
 
   sound(sndStart);
   isArmed=true;
-  Serial.begin(9600);
   delay(200);
 }
 
