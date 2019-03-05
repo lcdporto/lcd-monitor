@@ -23,17 +23,20 @@ byte rowPins[] = {A7,A6,A5,A4};
 byte colPins[] = {A3,A2,A1,A0};
 
 // active zones
-const byte zones[3] = { 5, 6, 9 };
+const byte ZONES[3] = { 5, 6 };
 
 // the LEDs
 const byte LED_ALARM = 2;
 const byte LED_ARMED = 4;
 
 // the buzz
-const byte Buzzer = 3;
+const byte BUZZER = 3;
 
 // External alarm
 const byte E_ALARM = 7;
+
+// Anti-Tampering
+const byte ANTI_TAMPERING = 9;
 
 /*
  * end PIN assigments
@@ -98,7 +101,7 @@ void setup() {
 
   byte *myMAC = conf.macAddress();
 
-  for ( uint i = 0; i < sizeof(zones) - 1; i++ ) {
+  for ( uint i = 0; i < sizeof(ZONES) - 1; i++ ) {
     pinMode(i,INPUT);
   }
   pinMode(LED_ALARM, OUTPUT); digitalWrite(LED_ALARM, HIGH);
@@ -162,9 +165,9 @@ void heartBeat()
 
 /* Read All Zones and trigger Alarm Events */
 void readZones() {
-  for ( int zone = 0; zone < sizeof(zones); zone++ ) {
+  for ( int zone = 0; zone < sizeof(ZONES); zone++ ) {
 
-    if( ( !digitalRead(zones[zone]) ) && isArmed ) {
+    if( ( !digitalRead(ZONES[zone]) ) && isArmed ) {
 
       if ( zoneType[zone] = INSTANT_ALARM ) {
         onAlarm=true;
@@ -225,7 +228,7 @@ void ledKeeper() {
 }
 
 void sound(byte sndCode) {
-  tone(Buzzer,500,100);
+  tone(BUZZER,500,100);
 }
 
 void soundKeeper() {
