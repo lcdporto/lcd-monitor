@@ -12,6 +12,7 @@
 
 #define DEFAULT_PIN 10561
 
+#define DEFAULT_PASSWORD 452367
 
 class Configuration {
   public:

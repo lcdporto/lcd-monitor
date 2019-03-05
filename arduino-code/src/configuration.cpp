@@ -55,7 +55,7 @@ void Configuration::_configureDefaults() {
   EEPROM.put(eeprom_addr++,random(0,255));
 
   // Default Password
-  this->wallet[0] = 452367;
+  this->wallet[0] = DEFAULT_PASSWORD;
   EEPROM.put(eeprom_addr++, wallet[0]);
 
   // Zones 1 - 3
