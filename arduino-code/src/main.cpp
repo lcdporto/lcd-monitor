@@ -56,6 +56,8 @@ Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, 4, 4 );
 const byte sndStart=1;
 const byte sndCancel=2;
 const byte sndKeyPress=3;
+const byte sndOK=4;
+const byte sndNotOK=5;
 
 
 /* zoneType: 0 = Instant Alarm; 1 = Deferred Alarm ); */
@@ -190,8 +192,22 @@ void readZones() {
   }
 }
 
+/*
+* Tries to Disrm the alarm if a correct password is given
+*/
+void disarmAlarm(String pass){
+  for(uint32_t p : conf.wallet){
+    if (p == pass.toInt()){
+      sound(sndOK);
+      onAlarm = 0;
+      isArmed = false;
+      return;
+    }
+  }
+  sound(sndNotOK);
+}
 
-/* Read the Keypad and trigger avents */
+/* Read the Keypad and trigger events */
 void readKeypad() {
   const byte IdleTimeBetweenKeyPresses = 10;
   static String inputString = "";
@@ -203,9 +219,16 @@ void readKeypad() {
     lastKeypress = millis();
     sound(sndKeyPress);
     inputString += key;
+
+    // Special keys
     if(key == 'A') {
     }
     if(key == '#') inputString = "";
+
+    if(inputString.length() >= 6){
+      disarmAlarm(inputString);
+      inputString = "";
+    }
   }
 
 
