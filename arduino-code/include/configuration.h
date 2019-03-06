@@ -13,6 +13,12 @@
 #define DEFAULT_PASSWORD 452367
 #define EEPROM_PASSWORD_BEGIN_ADDRESS 6
 
+// ALARM_ZONES Codes
+#define ZONE_DEFERRED_ACTIVE   128
+#define ZONE_DEFERRED_INACTIVE 0
+#define ZONE_INSTANT_ACTIVE    129
+#define ZONE_INSTANT_INACTIVE  1
+
 class Configuration {
   public:
     Configuration();
