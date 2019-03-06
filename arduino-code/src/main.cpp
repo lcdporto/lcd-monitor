@@ -23,7 +23,7 @@ byte rowPins[] = {A7,A6,A5,A4};
 byte colPins[] = {A3,A2,A1,A0};
 
 // active zones
-const byte ZONES[3] = { 5, 6 };
+const byte ZONES[3] = { 9, 5, 6 };
 
 // the LEDs
 const byte LED_ALARM = 2;
@@ -34,9 +34,6 @@ const byte BUZZER = 3;
 
 // External alarm
 const byte E_ALARM = 7;
-
-// Anti-Tampering
-const byte ANTI_TAMPERING = 9;
 
 /*
  * end PIN assigments
@@ -158,17 +155,15 @@ void heartBeat()
 /* Read All Zones and trigger Alarm Events */
 void readZones() {
   for ( int zone = 0; zone < sizeof(ZONES); zone++ ) {
-
-    if( ( !digitalRead(ZONES[zone]) ) && isArmed ) {
-
-
-      if ( zoneType[zone] = ALARM_ZONE_INSTANT ) {
+    if( ( !digitalRead(ZONES[zone]))
+          && conf.zoneActive[zone]
+          && isArmed ) {
+      if ( conf.zoneType[zone] = ALARM_ZONE_INSTANT ) {
         onAlarm=true;
       } else {
         deferredAlarmState=true;
         deferredAlarmStart = 0;
       }
-
     }
   }
 
@@ -181,7 +176,6 @@ void readZones() {
   ) {
     onAlarm=true;
   }
-*/
 }
 
 /*
