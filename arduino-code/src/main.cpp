@@ -90,8 +90,6 @@ void setup() {
 
   Serial.begin(9600); while (!Serial) { ; }
   Serial.println();
-  Serial.print("Default PIN: ");
-  Serial.println(conf.sherwood());
 
   Serial.println();
   Serial.print("1st Byte: ");

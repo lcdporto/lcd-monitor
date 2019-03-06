@@ -17,10 +17,6 @@ Configuration::Configuration() {
   }
 }
 
-int Configuration::sherwood() {
-  return DEFAULT_PIN;
-};
-
 
 /**
  * Check if the EEPROM has been primed if a usefull configuration

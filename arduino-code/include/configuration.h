@@ -10,15 +10,12 @@
 #define RANDOM_SIG1 88
 #define RANDOM_SIG2 229
 
-#define DEFAULT_PIN 10561
-
 #define DEFAULT_PASSWORD 452367
 #define EEPROM_PASSWORD_BEGIN_ADDRESS 6
 
 class Configuration {
   public:
     Configuration();
-    int sherwood();
     bool onDefault();
     byte * macAddress();
     void updateEEPROM();
@@ -35,7 +32,6 @@ class Configuration {
      */
     bool _checkIfConfigured();
     void _configureDefaults();
-    int _masterPIN = DEFAULT_PIN;
 };
 
 #endif
