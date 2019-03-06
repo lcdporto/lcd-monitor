@@ -12,14 +12,10 @@ Configuration::Configuration() {
   this->mac[4] = EEPROM.read(4);
   this->mac[5] = EEPROM.read(5);
 
-  for (uint8_t i = 6; EEPROM.read(i) > 0; i++){
+  for (uint8_t i = passBeginAddress; EEPROM.read(i) > 0; i++){
     wallet[i] = EEPROM.read(i);
   }
 }
-
-int Configuration::sherwood() {
-  return DEFAULT_PIN;
-};
 
 
 /**
