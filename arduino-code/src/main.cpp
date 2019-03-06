@@ -196,6 +196,8 @@ void readZones() {
 * Tries to Disrm the alarm if a correct password is given
 */
 void disarmAlarm(String pass){
+  Serial.print("Testing Password: ");
+  Serial.println(pass);
   for(uint32_t p : conf.wallet){
     if (p == pass.toInt()){
       sound(sndOK);
@@ -204,7 +206,40 @@ void disarmAlarm(String pass){
       return;
     }
   }
+  Serial.println("Wrong Password!");
   sound(sndNotOK);
+}
+
+/*
+* Adds a new password
+*/
+void addPass(String pass){
+  Serial.print("Adding Password: ");
+  Serial.println(pass);
+  for(uint32_t p : conf.wallet){
+    if (p == pass.toInt()){
+      Serial.println("Password already exists, nothing changed");
+      return;
+    }
+  }
+  conf.wallet[conf.npass++] = pass.toInt();
+  conf.updateEEPROM();
+}
+
+/*
+* Removes a password if it exists
+*/
+void remPass(String pass){
+  Serial.print("Removing Password: ");
+  Serial.println(pass);
+
+  for(uint8_t i = 0; i < conf.npass; i++){
+    if (conf.wallet[i] == pass.toInt()){
+      conf.wallet[i] = 0;
+      return;
+    }
+  }
+  Serial.println("Password not found, nothing changed");
 }
 
 /* Read the Keypad and trigger events */
@@ -219,6 +254,9 @@ void readKeypad() {
     lastKeypress = millis();
     sound(sndKeyPress);
     inputString += key;
+
+    Serial.print("Key Pressed: ");
+    Serial.println(key);
 
     // Special keys
     if(key == 'A') {

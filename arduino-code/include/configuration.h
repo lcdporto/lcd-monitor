@@ -13,6 +13,7 @@
 #define DEFAULT_PIN 10561
 
 #define DEFAULT_PASSWORD 452367
+#define EEPROM_PASSWORD_BEGIN_ADDRESS 6
 
 class Configuration {
   public:
@@ -20,9 +21,12 @@ class Configuration {
     int sherwood();
     bool onDefault();
     byte * macAddress();
+    void updateEEPROM();
     uint32_t wallet[100] = {0};
+    uint8_t npass = 0;
 
   protected:
+    uint8_t passBeginAddress = 6;
     byte mac[6] = { 0x90, 0xA2, 0xDA, 0x00, 0x00, 0x00 };
 
   private:

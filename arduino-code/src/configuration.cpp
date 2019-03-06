@@ -57,6 +57,8 @@ void Configuration::_configureDefaults() {
   // Default Password
   this->wallet[0] = DEFAULT_PASSWORD;
   EEPROM.put(eeprom_addr++, wallet[0]);
+  this->passBeginAddress = eeprom_addr;
+  this->npass = 1;
 
   // Zones 1 - 3
 
@@ -67,4 +69,10 @@ void Configuration::_configureDefaults() {
  */
 byte * Configuration::macAddress() {
   return this->mac;
+}
+
+void Configuration::updateEEPROM(){
+  for(uint8_t i = 0; i < npass; i++){
+    EEPROM.update(passBeginAddress+i, wallet[i]);
+  }
 }
