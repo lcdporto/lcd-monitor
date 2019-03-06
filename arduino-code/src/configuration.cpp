@@ -12,6 +12,18 @@ Configuration::Configuration() {
   this->mac[4] = EEPROM.read(4);
   this->mac[5] = EEPROM.read(5);
 
+  // read zones and populate arrays
+  for (byte i = EEPROM_ZONE_BEGIN_ADDRESS;
+       i < EEPROM_ZONE_BEGIN_ADDRESS+ZONE_COUNT;
+       i++) {
+    byte v = EEPROM.read(i);
+    if ( v >= 128 ) {
+      this->zoneActive[i-EEPROM_ZONE_BEGIN_ADDRESS] = true;
+      v = v - 128;
+    }
+    this->zoneType[i-EEPROM_ZONE_BEGIN_ADDRESS] = v;
+  }
+
   for (uint8_t i = passBeginAddress; EEPROM.read(i) > 0; i++){
     wallet[i] = EEPROM.read(i);
   }
@@ -50,13 +62,16 @@ void Configuration::_configureDefaults() {
   EEPROM.put(eeprom_addr++,random(0,255));
   EEPROM.put(eeprom_addr++,random(0,255));
 
+  // Zone Defalts
+  EEPROM.put(eeprom_addr++, ZONE_INSTANT_ACTIVE);  // Anti-tampering
+  EEPROM.put(eeprom_addr++, ZONE_DEFERRED_ACTIVE); // Enterence
+  EEPROM.put(eeprom_addr++, ZONE_INSTANT_ACTIVE);  // Other
+
   // Default Password
   this->wallet[0] = DEFAULT_PASSWORD;
   EEPROM.put(eeprom_addr++, wallet[0]);
   this->passBeginAddress = eeprom_addr;
   this->npass = 1;
-
-  // Zones 1 - 3
 
 }
 
@@ -71,4 +86,17 @@ void Configuration::updateEEPROM(){
   for(uint8_t i = 0; i < npass; i++){
     EEPROM.update(passBeginAddress+i, wallet[i]);
   }
+}
+
+
+/**
+ * Change the configuration of a Zone
+ *
+ * @param byte zone    Zone to update
+ * @param byte type    Type of zone
+ * @param bool active  If zone is active
+ */
+void Configuration::zoneSet(byte zone, byte type, bool active){
+  if (active) type = type + 128;
+  EEPROM.update(EEPROM_ZONE_BEGIN_ADDRESS + zone, type);
 }

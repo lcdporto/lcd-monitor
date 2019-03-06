@@ -10,8 +10,17 @@
 #define RANDOM_SIG1 88
 #define RANDOM_SIG2 229
 
+// ALARM_ZONES Codes
+#define ZONE_DEFERRED_ACTIVE   128
+#define ZONE_DEFERRED_INACTIVE 0
+#define ZONE_INSTANT_ACTIVE    129
+#define ZONE_INSTANT_INACTIVE  1
+#define EEPROM_ZONE_BEGIN_ADDRESS 6
+#define ZONE_COUNT 3
+
 #define DEFAULT_PASSWORD 452367
-#define EEPROM_PASSWORD_BEGIN_ADDRESS 6
+#define EEPROM_PASSWORD_BEGIN_ADDRESS 9
+
 
 class Configuration {
   public:
@@ -21,6 +30,9 @@ class Configuration {
     void updateEEPROM();
     uint32_t wallet[100] = {0};
     uint8_t npass = 0;
+    void zoneSet(byte zone, byte type, bool active);
+    bool zoneActive[3] = {0};
+    byte zoneType[3] = {0};
 
   protected:
     uint8_t passBeginAddress = EEPROM_PASSWORD_BEGIN_ADDRESS;
