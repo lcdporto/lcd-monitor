@@ -23,7 +23,7 @@ class Configuration {
     uint8_t npass = 0;
 
   protected:
-    uint8_t passBeginAddress = 6;
+    uint8_t passBeginAddress = EEPROM_PASSWORD_BEGIN_ADDRESS;
     byte mac[6] = { 0x90, 0xA2, 0xDA, 0x00, 0x00, 0x00 };
 
   private:
