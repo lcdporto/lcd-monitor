@@ -1,17 +1,37 @@
 Requisitos
 ==========
 
-Interface web
----------
+Dois focos principais:
+
+* Autenticação
+* Monitorização
+
+Autenticação
+------------
+
+* autenticação de utilizadores
+  * Suporte para "Single Sign On (SSO)"
 * gestão de códigos por utilizador
 * ativação/desativação remota (via web) do alarme
 * atribuição de códigos temporários
+* Pode ser delegada para um serviço externo
+  * tem sempre que haver suporte para funcionar como backup
 
-Interface arduino (O arduino vai ter um [shield ethernet](https://www.tweaking4all.com/hardware/arduino/arduino-enc28j60-ethernet/))
----------
-* Baseada em ethernet
+Monitorização
+-------------
 
-Software BOM
---------
-* Baseada em [django-rest](https://www.django-rest-framework.org/)
-
+* Registar:
+  * Alterações de estado
+    * Sensores
+    * Porta
+* Alarmistca:
+  * Fonte:
+    * Sensores
+      * Transição
+      * Nivel
+    * Porta
+      * Transição
+  * Tipos de alarmes:
+    * Silenciosos
+    * Sonoros
+    * Remotos
