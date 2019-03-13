@@ -63,7 +63,7 @@ void Configuration::_configureDefaults() {
 /**
  * Returns a pointer to the MAC address to use
  */
-byte * Configuration::macAddress() {
+byte* Configuration::macAddress() {
   return this->mac;
 }
 

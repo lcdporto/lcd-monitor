@@ -17,7 +17,7 @@ class Configuration {
   public:
     Configuration();
     bool onDefault();
-    byte * macAddress();
+    byte* macAddress();
     void updateEEPROM();
     uint32_t wallet[100] = {0};
     uint8_t npass = 0;

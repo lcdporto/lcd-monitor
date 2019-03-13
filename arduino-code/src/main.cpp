@@ -11,6 +11,16 @@
 #include <EEPROM.h>
 #include "main.h"
 #include "configuration.h"
+#include <EtherCard.h>
+
+static byte mymac[] = { 0x74,0x69,0x69,0x2D,0x30,0x31 };
+
+byte Ethernet::buffer[500];
+
+// Ethernet Chip Select
+const byte ETHERNET_CS = 10;
+
+// =========================================================================88|
 
 Configuration conf;
 
@@ -87,11 +97,11 @@ int keyToneDuration = 50;
 // =========================================================================88|
 
 void setup() {
-
-  Serial.begin(9600); while (!Serial) { ; }
+  Serial.begin(57600);
   Serial.println();
 
-  Serial.println();
+  Serial.println("LCD Monitor");
+
   Serial.print("1st Byte: ");
   Serial.println(EEPROM.read(0));
   Serial.print("2nd Byte: ");
@@ -99,7 +109,17 @@ void setup() {
   Serial.print("3rd Byte: ");
   Serial.println(EEPROM.read(2));
 
-  byte *myMAC = conf.macAddress();
+  byte mac[] = {conf.macAddress()[0], conf.macAddress()[1], conf.macAddress()[2], conf.macAddress()[3], conf.macAddress()[4], conf.macAddress()[5]};
+
+  if (ether.begin(sizeof Ethernet::buffer, mac, 10) == 0)
+    Serial.println( "Failed to access Ethernet controller");
+
+  if (!ether.dhcpSetup())
+    Serial.println("DHCP failed");
+
+  ether.printIp("IP:  ", ether.myip);
+  ether.printIp("GW:  ", ether.gwip);
+  ether.printIp("DNS: ", ether.dnsip);
 
   for ( uint i = 0; i < sizeof(ZONES) - 1; i++ ) {
     pinMode(i,INPUT);
